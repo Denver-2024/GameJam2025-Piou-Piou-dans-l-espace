@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://w27nr0x1pcox"]
+
+[ext_resource type="Texture2D" uid="uid://cj0tffoh4r7lm" path="res://addons/kenney_prototype_textures/red/texture_02.png" id="1_uq0bp"]
+[ext_resource type="Texture2D" uid="uid://cxnnr1j3fftj4" path="res://addons/kenney_prototype_textures/red/texture_11.png" id="2_x61oa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sctak"]
+albedo_texture = ExtResource("1_uq0bp")
+uv1_scale = Vector3(40, 40, 40)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_i11co"]
+albedo_texture = ExtResource("2_x61oa")
+
+[sub_resource type="PrismMesh" id="PrismMesh_wqj2w"]
+material = SubResource("ORMMaterial3D_i11co")
+left_to_right = 1.0
+size = Vector3(10, 5, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5opbo"]
+data = PackedVector3Array(5, 2.5, 0.5, 5, -2.5, 0.5, -5, -2.5, 0.5, 5, 2.5, -0.5, -5, -2.5, -0.5, 5, -2.5, -0.5, 5, 2.5, 0.5, 5, 2.5, -0.5, 5, -2.5, 0.5, 5, 2.5, -0.5, 5, -2.5, -0.5, 5, -2.5, 0.5, 5, 2.5, -0.5, 5, 2.5, 0.5, -5, -2.5, -0.5, 5, 2.5, 0.5, -5, -2.5, 0.5, -5, -2.5, -0.5, -5, -2.5, 0.5, 5, -2.5, 0.5, -5, -2.5, -0.5, 5, -2.5, 0.5, 5, -2.5, -0.5, -5, -2.5, -0.5)
+
+[node name="RigidBody3D" type="StaticBody3D"]
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_sctak")
+mesh = SubResource("PrismMesh_wqj2w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_5opbo")

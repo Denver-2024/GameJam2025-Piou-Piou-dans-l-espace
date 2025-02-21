@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d15ddktnoamu"
+path="res://.godot/imported/son laser.wav-9f8ae36d8a5b81e36e0f0e9c4cb66f80.sample"
+
+[deps]
+
+source_file="res://Sounds/son laser.wav"
+dest_files=["res://.godot/imported/son laser.wav-9f8ae36d8a5b81e36e0f0e9c4cb66f80.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

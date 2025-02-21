@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsyf2fyx34413"
+path="res://.godot/imported/blessure ou touche.mp3-9671b4ea4229a0c502ae9a87756864bc.mp3str"
+
+[deps]
+
+source_file="res://Sounds/blessure ou touche.mp3"
+dest_files=["res://.godot/imported/blessure ou touche.mp3-9671b4ea4229a0c502ae9a87756864bc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

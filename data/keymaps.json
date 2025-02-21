@@ -1,0 +1,518 @@
+{
+	"Crouch": {
+		"echo": false,
+		"keycode": 67,
+		"location": 0,
+		"pressed": false
+	},
+	"exit": {
+		"echo": false,
+		"keycode": 4194305,
+		"location": 0,
+		"pressed": false
+	},
+	"interact": {
+		"echo": false,
+		"keycode": 69,
+		"location": 0,
+		"pressed": false
+	},
+	"jump": {
+		"echo": false,
+		"keycode": 32,
+		"location": 0,
+		"pressed": false
+	},
+	"move_backward": {
+		"echo": false,
+		"keycode": 83,
+		"location": 0,
+		"pressed": false
+	},
+	"move_forward": {
+		"echo": false,
+		"keycode": 87,
+		"location": 0,
+		"pressed": false
+	},
+	"move_left": {
+		"echo": false,
+		"keycode": 65,
+		"location": 0,
+		"pressed": false
+	},
+	"move_right": {
+		"echo": false,
+		"keycode": 68,
+		"location": 0,
+		"pressed": false
+	},
+	"open_score": {
+		"echo": false,
+		"keycode": 4194306,
+		"location": 0,
+		"pressed": false
+	},
+	"reload": {
+		"echo": false,
+		"keycode": 82,
+		"location": 0,
+		"pressed": false
+	},
+	"sprint": {
+		"echo": false,
+		"keycode": 4194325,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_accept": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_cancel": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_copy": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_cut": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_down": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_end": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_filedialog_refresh": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_filedialog_show_hidden": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_filedialog_up_one_level": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_graph_delete": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_graph_duplicate": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_home": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_left": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_menu": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_page_down": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_page_up": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_paste": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_redo": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_right": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_select": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_swap_input_direction": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_add_selection_for_next_occurrence": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_backspace": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_backspace_all_to_left.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_backspace_word": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_backspace_word.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_add_above": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_add_above.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_add_below": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_add_below.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_document_end": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_document_end.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_document_start": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_document_start.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_down": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_left": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_line_end": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_line_end.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_line_start": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_line_start.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_page_down": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_page_up": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_right": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_up": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_word_left": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_word_left.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_word_right": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_caret_word_right.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_clear_carets_and_selection": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_completion_accept": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_completion_query": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_dedent": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_delete": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_delete_all_to_right.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_delete_word": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_delete_word.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_newline": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_newline_above": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_newline_blank": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_scroll_down": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_scroll_down.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_scroll_up": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_scroll_up.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_select_all": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_select_word_under_caret": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_select_word_under_caret.macos": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_skip_selection_for_next_occurrence": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_submit": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_text_toggle_insert_mode": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_undo": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"ui_up": {
+		"echo": false,
+		"keycode": 0,
+		"location": 0,
+		"pressed": false
+	},
+	"vi_cancel": {
+		"echo": false,
+		"keycode": 80,
+		"location": 0,
+		"pressed": false
+	},
+	"weapon1": {
+		"echo": false,
+		"keycode": 49,
+		"location": 0,
+		"pressed": false
+	},
+	"weapon2": {
+		"echo": false,
+		"keycode": 50,
+		"location": 0,
+		"pressed": false
+	},
+	"weapon3": {
+		"echo": false,
+		"keycode": 51,
+		"location": 0,
+		"pressed": false
+	}
+}

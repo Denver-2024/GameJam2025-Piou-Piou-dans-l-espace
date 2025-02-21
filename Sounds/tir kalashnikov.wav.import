@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dbdk076e4p5v5"
+path="res://.godot/imported/tir kalashnikov.wav-5f20302d4faaf3dabfdbe294b8afb556.sample"
+
+[deps]
+
+source_file="res://Sounds/tir kalashnikov.wav"
+dest_files=["res://.godot/imported/tir kalashnikov.wav-5f20302d4faaf3dabfdbe294b8afb556.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

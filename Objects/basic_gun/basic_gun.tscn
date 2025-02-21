@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf0vjbkxnfye7"]
+
+[ext_resource type="Script" path="res://Scripts/objects/basic_gun.gd" id="1_qoyrj"]
+[ext_resource type="PackedScene" uid="uid://c1locwrcy22xl" path="res://Objects/basic_gun/basic_gun_model.glb" id="2_xu1lc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_clqbg"]
+albedo_color = Color(1, 0.8, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.670588, 0, 1)
+emission_energy_multiplier = 1.8
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_do6qc"]
+direction = Vector3(0, 0, -1)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_c4pd2"]
+uv2_padding = 2.5
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="Basic_gun" type="Node3D"]
+script = ExtResource("1_qoyrj")
+bullet_path = "res://Objects/bullet.tscn"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.148545, -0.300053)
+material_override = SubResource("StandardMaterial3D_clqbg")
+emitting = false
+amount = 6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_do6qc")
+draw_pass_1 = SubResource("BoxMesh_c4pd2")
+
+[node name="basic_gun_model" parent="." instance=ExtResource("2_xu1lc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.25)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.146127, -0.46382)
+target_position = Vector3(0, -100, 0)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

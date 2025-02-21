@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://283wnay4htpt"]
+
+[ext_resource type="Script" path="res://Scripts/objects/mannequin.gd" id="1_fgkeo"]
+[ext_resource type="FontFile" uid="uid://buh5hiea02elm" path="res://styles/fonts/Nasalization Rg.otf" id="2_65w3d"]
+[ext_resource type="PackedScene" uid="uid://cpigts4rkfrxa" path="res://player/character.glb" id="2_ffl8y"]
+
+[sub_resource type="Curve3D" id="Curve3D_awmnp"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, -8, 0, 8, 0, 0, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gt1y"]
+radius = 1.00147
+height = 4.70553
+
+[sub_resource type="BoxMesh" id="BoxMesh_m1xer"]
+size = Vector3(0.2, 3, 0.2)
+
+[sub_resource type="Animation" id="Animation_xbpqw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_8i5bc"]
+resource_name = "round"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_okvwi"]
+_data = {
+"RESET": SubResource("Animation_xbpqw"),
+"round": SubResource("Animation_8i5bc")
+}
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_fgkeo")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_awmnp")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+rotation_mode = 0
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Path3D/PathFollow3D"]
+collision_layer = 36
+collision_mask = 5
+
+[node name="Label3D" type="Label3D" parent="Path3D/PathFollow3D/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76356, 0)
+billboard = 2
+text = "100"
+font = ExtResource("2_65w3d")
+font_size = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/RigidBody3D"]
+transform = Transform3D(-0.5, 0, 0, 0, 0.5, -4.37114e-08, 0, 4.37114e-08, 0.5, 0, 1.27867, 0)
+shape = SubResource("CapsuleShape3D_5gt1y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D/RigidBody3D"]
+transform = Transform3D(-0.5, 0, 0, 0, 0.5, -4.37114e-08, 0, 4.37114e-08, 0.5, 0, 0.399035, 0)
+mesh = SubResource("BoxMesh_m1xer")
+skeleton = NodePath("../character")
+
+[node name="character" parent="Path3D/PathFollow3D/RigidBody3D" instance=ExtResource("2_ffl8y")]
+transform = Transform3D(-0.5, 0, 0, 0, 0.5, -4.37114e-08, 0, 4.37114e-08, 0.5, 0, 0.399035, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_okvwi")
+}
+speed_scale = 0.15

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch0kohjphbdov"]
+
+[ext_resource type="PackedScene" uid="uid://b17vpt4lba0gf" path="res://Objects/grenade/grenade.glb" id="1_0q7qf"]
+[ext_resource type="Script" path="res://Scripts/objects/throwable.gd" id="1_esa7k"]
+
+[node name="GrenadePlayer" type="Node3D"]
+script = ExtResource("1_esa7k")
+obj_path = "res://Objects/grenade/grenade_object.tscn"
+
+[node name="grenade" parent="." instance=ExtResource("1_0q7qf")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AudioListener3D" type="AudioStreamPlayer3D" parent="."]

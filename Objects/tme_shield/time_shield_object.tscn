@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjh6mjoq638fl"]
+
+[ext_resource type="Script" path="res://Objects/tme_shield/time_shield_object.gd" id="1_5xtb8"]
+[ext_resource type="PackedScene" uid="uid://b17vpt4lba0gf" path="res://Objects/grenade/grenade.glb" id="2_fs0hn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p6k78"]
+friction = 0.5
+bounce = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6x4kw"]
+size = Vector3(0.165649, 0.354004, 0.195801)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l42nu"]
+radius = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vjni"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0, 1, 1, 0.419608)
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_e0l31"]
+material = SubResource("StandardMaterial3D_3vjni")
+radius = 5.0
+height = 10.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nrv3r"]
+direction = Vector3(1, 1, 0)
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ih61b"]
+albedo_color = Color(1, 0.666667, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.596078, 0, 1)
+emission_energy_multiplier = 2.6
+emission_on_uv2 = true
+grow = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_8mvl8"]
+material = SubResource("StandardMaterial3D_ih61b")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_bvnnr"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("grenade:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("GPUParticles3D:emitting")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 68
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_p6k78")
+contact_monitor = true
+max_contacts_reported = 10000
+script = ExtResource("1_5xtb8")
+
+[node name="grenade" parent="." instance=ExtResource("2_fs0hn")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003479, 0.00610352, 0.0109863)
+shape = SubResource("BoxShape3D_6x4kw")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 64
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_l42nu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+visible = false
+mesh = SubResource("SphereMesh_e0l31")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 100
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+trail_lifetime = 0.65
+process_material = SubResource("ParticleProcessMaterial_nrv3r")
+draw_pass_1 = SubResource("BoxMesh_8mvl8")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_bvnnr")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

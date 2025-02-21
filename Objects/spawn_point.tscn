@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsen08caqdte5"]
+
+[ext_resource type="Script" path="res://Objects/spawn_point.gd" id="1_b2p01"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5lvx6"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.25
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p4ejd"]
+height = 3.0
+radius = 0.993363
+
+[node name="Spawn_point" type="Node3D"]
+script = ExtResource("1_b2p01")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_5lvx6")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54589, 0)
+collision_layer = 4
+collision_mask = 3
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_p4ejd")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

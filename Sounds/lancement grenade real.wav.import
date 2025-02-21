@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://1p5poncni0pd"
+path="res://.godot/imported/lancement grenade real.wav-c6ca67861c2608a129ebf8f66f40344b.sample"
+
+[deps]
+
+source_file="res://Sounds/lancement grenade real.wav"
+dest_files=["res://.godot/imported/lancement grenade real.wav-c6ca67861c2608a129ebf8f66f40344b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c3apkc2n5n62c"
+path="res://.godot/imported/Voix enfant piou piou.wav-097964457643b041471ea9622558053c.sample"
+
+[deps]
+
+source_file="res://Sounds/Voix enfant piou piou.wav"
+dest_files=["res://.godot/imported/Voix enfant piou piou.wav-097964457643b041471ea9622558053c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

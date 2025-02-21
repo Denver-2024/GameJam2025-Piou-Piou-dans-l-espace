@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt4ckpi84615k"]
+
+[ext_resource type="PackedScene" uid="uid://ci7jik1m8kgfd" path="res://Blender-models/medkit.glb" id="1_ktxb0"]
+[ext_resource type="Script" path="res://Scripts/objects/med_kit.gd" id="1_qn8ds"]
+[ext_resource type="Script" path="res://Scripts/game/sound_manager.gd" id="3_fdmtr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_18gmk"]
+size = Vector3(0.537354, 0.501404, 0.890476)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 13
+contact_monitor = true
+max_contacts_reported = 1000
+script = ExtResource("1_qn8ds")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0101318, 0.185699, -0.00206947)
+shape = SubResource("BoxShape3D_18gmk")
+
+[node name="medkit" parent="." instance=ExtResource("1_ktxb0")]
+
+[node name="sound_manager_medkit" type="Node" parent="."]
+script = ExtResource("3_fdmtr")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

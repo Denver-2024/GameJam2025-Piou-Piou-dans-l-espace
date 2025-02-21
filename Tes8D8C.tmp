@@ -1,0 +1,203 @@
+[gd_scene load_steps=15 format=3 uid="uid://c23vq3eol1x7t"]
+
+[ext_resource type="Script" path="res://addons/vaporwavesky/vaporwave_sky_material.gd" id="1_hrplo"]
+[ext_resource type="Shader" path="res://addons/vaporwavesky/vaporwave.gdshader" id="2_kiphd"]
+[ext_resource type="Texture2D" uid="uid://cxmvswcyobclu" path="res://addons/kenney_prototype_textures/purple/texture_05.png" id="4_fx0n5"]
+[ext_resource type="PackedScene" uid="uid://w27nr0x1pcox" path="res://Objects/Rampe.tscn" id="4_t0de2"]
+[ext_resource type="PackedScene" uid="uid://dnoyy1bb4gbm3" path="res://Objects/bloc.tscn" id="5_t1mya"]
+[ext_resource type="PackedScene" uid="uid://b0aoy5upudmwv" path="res://Objects/Floor_test.tscn" id="6_w2pf6"]
+[ext_resource type="PackedScene" uid="uid://q4f6vyms8vel" path="res://Objects/Sphere.tscn" id="8_caipc"]
+
+[sub_resource type="GDScript" id="GDScript_iva6e"]
+script/source = "extends Node3D
+
+var is_host = false
+var spawn_points = []
+
+@export var Player_scene : PackedScene
+func _ready():
+	# Récupère tous les points de spawn dans le groupe \"spawn_points\"
+	spawn_points = get_tree().get_nodes_in_group(\"Spawn_points\")
+
+func initialize_network(host_game: bool):
+	is_host = host_game
+	if is_host:
+		start_server()
+	else:
+		connect_to_server()
+
+func start_server():
+	var peer = ENetMultiplayerPeer.new()
+	peer.create_server(7777)
+	self.multiplayer.peer = peer
+	self.multiplayer.connect(\"peer_connected\", Callable(self, \"_on_peer_connected\"))
+
+func connect_to_server():
+	var peer = ENetMultiplayerPeer.new()
+	peer.create_client(\"127.0.0.1\", 7777)
+	self.multiplayer.peer = peer
+	self.multiplayer.connect(\"connected_to_server\", Callable(self, \"_on_connected_to_server\"))
+
+# Cette fonction est appelée lorsque de nouveaux clients se connectent
+func _on_peer_connected(peer_id):
+	print(\"Nouvelle connexion : \", peer_id)
+	spawn_player(peer_id)
+
+# Fonction pour spawner un joueur
+func spawn_player(peer_id):
+	var player_instance = preload(\"res://player/player.tscn\").instantiate()
+	
+	# Récupérer un point de spawn en utilisant le peer_id pour varier les emplacements
+	var spawn_point = spawn_points[peer_id % spawn_points.size()] # Choisit un point de spawn basé sur l'ID du peer
+	player_instance.transform.origin = spawn_point.transform.origin # Positionne le joueur au point de spawn
+
+	# Ajoute le joueur à la scène
+	get_tree().current_scene.add_child(player_instance)
+
+# Cette fonction est appelée lorsque le client est connecté au serveur
+func _on_connected_to_server():
+	print(\"Connecté au serveur avec succès\")
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wmp6"]
+shader = ExtResource("2_kiphd")
+shader_parameter/sky_color = Color(0.1, 0.07, 0.2, 1)
+shader_parameter/sky_horizon_color = Color(0.56, 0.18, 0.42, 1)
+shader_parameter/sky_horizon_decay = 3.0
+shader_parameter/ground_color = Color(0, 0, 0, 1)
+shader_parameter/ground_horizon_color = Color(0.1, 0, 0.07, 1)
+shader_parameter/ground_horizon_decay = 1.0
+shader_parameter/stars_enabled = true
+shader_parameter/stars_below_horizon = false
+shader_parameter/star_color = Color(0.95, 0.9, 0.6, 1)
+shader_parameter/star_radius = 0.4
+shader_parameter/star_density = 13.6
+shader_parameter/star_randomness = 1.0
+shader_parameter/star_seed = Vector2(0, 0)
+shader_parameter/grid_enabled = false
+shader_parameter/grid_color = Color(0.18, 0.92, 0.74, 1)
+shader_parameter/grid_depth = 2.0
+shader_parameter/grid_spacing = 1.0
+shader_parameter/grid_thickness = 0.03
+shader_parameter/grid_max_distance = 25.0
+shader_parameter/grid_max_distance_fade = 0.3
+shader_parameter/grid_energy = 1.0
+shader_parameter/sun_radius = 10.0
+shader_parameter/sun_smoothing = 0.35
+shader_parameter/sun_glow_color = Color(0.96, 0.9, 0.35, 1)
+shader_parameter/sun_glow_radius = 30.0
+shader_parameter/sun_glow_intensity = 0.5
+shader_parameter/sun_gradient_enabled = true
+shader_parameter/sun_color_1 = Color(0.96, 0.9, 0.35, 1)
+shader_parameter/sun_color_2 = Color(0.96, 0.35, 0.9, 1)
+shader_parameter/sun_gradient_pos_frac = 0.6
+shader_parameter/sun_gradient_span_frac = 0.8
+shader_parameter/sun_banding_enabled = true
+shader_parameter/sun_banding_base_gap = 0.03
+shader_parameter/sun_banding_gap_mul = 1.1
+shader_parameter/sun_banding_stop_height = 0.7
+shader_parameter/sun_banding_thickness = 0.01
+script = ExtResource("1_hrplo")
+
+[sub_resource type="Sky" id="Sky_d2s1c"]
+sky_material = SubResource("ShaderMaterial_1wmp6")
+
+[sub_resource type="Environment" id="Environment_omeom"]
+background_mode = 2
+sky = SubResource("Sky_d2s1c")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hp830"]
+albedo_texture = ExtResource("4_fx0n5")
+uv1_scale = Vector3(60, 40, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ywjyp"]
+material = SubResource("StandardMaterial3D_hp830")
+size = Vector3(100, 0.5, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gvlli"]
+size = Vector3(100, 0.5, 100)
+
+[node name="Testing_area" type="Node3D"]
+script = SubResource("GDScript_iva6e")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_omeom")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.190519, 0.257648)
+disable_mode = 2
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_ywjyp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_gvlli")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.680657, 0.0216185, -0.732283, 0.732602, -0.0200857, 0.680361, 0, -0.999565, -0.0295092, 49.2802, 194.975, -0.688057)
+light_bake_mode = 0
+shadow_enabled = true
+
+[node name="Blocs" type="Node3D" parent="."]
+
+[node name="Bloc" parent="Blocs" instance=ExtResource("5_t1mya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.80206, 8.266)
+disable_mode = 1
+mass = 0.001
+
+[node name="RigidBody3D" parent="Blocs" instance=ExtResource("4_t0de2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.66238, 2.34296, 4.02002)
+mass = 1000.0
+gravity_scale = 7.35
+freeze = true
+
+[node name="RigidBody3D" parent="." instance=ExtResource("6_w2pf6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.091, 1.5, -7.976)
+freeze = true
+
+[node name="Label3D" type="Label3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998806, 0)
+pixel_size = 0.02
+text = "Trop bas
+"
+
+[node name="RigidBody3D2" parent="." instance=ExtResource("6_w2pf6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.109, 2, -7.95436)
+freeze = true
+
+[node name="Label3D" type="Label3D" parent="RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911712, 0)
+pixel_size = 0.02
+text = "Assez haut"
+
+[node name="Sphere" parent="." instance=ExtResource("8_caipc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 10, 4)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Host" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Host
+"
+
+[node name="Join" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Join
+"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player/player.tscn")
+spawn_path = NodePath("..")
+
+[node name="Spawn_Points" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.27808, -0.422979)
+
+[node name="Spawn1" type="Marker3D" parent="Spawn_Points"]
+
+[connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_join_pressed"]

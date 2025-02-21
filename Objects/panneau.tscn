@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://qjv6g4j07ryr"]
+
+[ext_resource type="Texture2D" uid="uid://csilfon70obxv" path="res://ico.png" id="1_vibkk"]
+[ext_resource type="Texture2D" uid="uid://bh4akix64a8x" path="res://Objects/textures/at_logo.png" id="2_jaimf"]
+[ext_resource type="Texture2D" uid="uid://25x8di2374lm" path="res://Objects/textures/pp-logo.png" id="3_7ccaa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dg6x"]
+transparency = 1
+albedo_texture = ExtResource("1_vibkk")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_thfw8"]
+material = SubResource("StandardMaterial3D_5dg6x")
+size = Vector2(12, 12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fj6r"]
+transparency = 1
+albedo_texture = ExtResource("2_jaimf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rp0i2"]
+material = SubResource("StandardMaterial3D_8fj6r")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqe2x"]
+transparency = 1
+albedo_texture = ExtResource("3_7ccaa")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h2qrk"]
+material = SubResource("StandardMaterial3D_aqe2x")
+size = Vector2(10, 10)
+
+[node name="Panneau" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_thfw8")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.69871, 0)
+text = "Bienvenue dans"
+font_size = 200
+outline_size = 25
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -13.0724, -2.16841, 0)
+mesh = SubResource("PlaneMesh_rp0i2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 11.7172, -1.34691, 0)
+mesh = SubResource("PlaneMesh_h2qrk")

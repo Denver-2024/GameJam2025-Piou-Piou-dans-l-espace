@@ -1,0 +1,596 @@
+[gd_scene load_steps=4 format=3 uid="uid://1pyco1nd2v25"]
+
+[ext_resource type="FontFile" uid="uid://buh5hiea02elm" path="res://styles/fonts/Nasalization Rg.otf" id="1_gcnxy"]
+[ext_resource type="Script" path="res://Scripts/menu/remapper.gd" id="2_ab1hu"]
+[ext_resource type="Script" path="res://Scripts/menu/remapper_manager.gd" id="2_yb1oo"]
+
+[node name="options" type="CanvasLayer"]
+
+[node name="RE" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="RE"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="RE"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Remapper" type="MarginContainer" parent="RE"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+script = ExtResource("2_yb1oo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RE/Remapper"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RE/Remapper/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 75
+text = "Contrôles"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ColorRect" type="ColorRect" parent="RE/Remapper/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RE/Remapper/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Mouvements"
+
+[node name="ColorRect2" type="ColorRect" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Avancer"
+
+[node name="up" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "move_forward"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Reculer"
+
+[node name="down" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "move_backward"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Gauche"
+
+[node name="left" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "move_left"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Droite"
+
+[node name="button" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "move_right"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Courir"
+
+[node name="run" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "sprint"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Se baisser"
+
+[node name="crouch" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "Crouch"
+
+[node name="HBoxContainer17" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer17"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Sauter"
+
+[node name="jump" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer17"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "jump"
+
+[node name="ColorRect4" type="ColorRect" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Contrôle des armes"
+
+[node name="ColorRect3" type="ColorRect" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Tirer"
+
+[node name="left_click" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "left_click"
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Viser"
+
+[node name="aim" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "aim"
+
+[node name="ColorRect5" type="ColorRect" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Inventaire"
+
+[node name="ColorRect6" type="ColorRect" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Première arme"
+
+[node name="w1" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "weapon1"
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Deuxième arme"
+
+[node name="w2" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "weapon2"
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer12"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Troisème arme"
+
+[node name="w3" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer12"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "weapon3"
+
+[node name="HBoxContainer13" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer13"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Quatrième arme"
+
+[node name="w4" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer13"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "weapon4"
+
+[node name="ColorRect7" type="ColorRect" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Autres"
+
+[node name="ColorRect8" type="ColorRect" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="HBoxContainer14" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer14"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Voir scores"
+
+[node name="score" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer14"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+script = ExtResource("2_ab1hu")
+action = "open_score"
+
+[node name="HBoxContainer15" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer15"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "menu pause"
+
+[node name="exit" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer15"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "exit"
+
+[node name="HBoxContainer16" type="HBoxContainer" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer16"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Intéragir"
+
+[node name="interact" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer16"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ab1hu")
+action = "interact"
+
+[node name="reset" type="Button" parent="RE/Remapper/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 25
+text = "Réinitialiser les contrôles"
+
+[node name="ColorRect2" type="ColorRect" parent="RE/Remapper/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="RE/Remapper/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 18
+text = "Retour aux options"
+
+[node name="OPT" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="OPT"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="OPT"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="OPT"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OPT/MarginContainer"]
+custom_minimum_size = Vector2(450, 0)
+layout_direction = 1
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="OPT/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 75
+text = "Options
+"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="OPT/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VButton" type="VBoxContainer" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Keymaps" type="Button" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 25
+text = "Changer les commandes"
+
+[node name="ColorRect" type="ColorRect" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 25
+text = "Pseudo -Peut rester vide-"
+
+[node name="ID" type="LineEdit" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Entrez votre pseudo"
+
+[node name="ColorRect2" type="ColorRect" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 25
+text = "Sensibilité de la souris"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+layout_mode = 2
+size_flags_vertical = 4
+localize_numeral_system = false
+
+[node name="HSlider" type="HSlider" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 50.0
+rounded = true
+
+[node name="mouse_display" type="Label" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 25
+text = "0.50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 25
+text = "Volume
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -40.0
+max_value = 40.0
+step = 0.8
+
+[node name="vol_display" type="Label" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 25
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect5" type="ColorRect" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 25
+text = "Autres"
+
+[node name="ColorRect4" type="ColorRect" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="TGLCROUCH" type="Button" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Appuie simple pour se baisser"
+
+[node name="TGLSPRINT" type="Button" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Appuie simple pour courir"
+
+[node name="ColorRect6" type="ColorRect" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="cfr" type="HBoxContainer" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton"]
+layout_mode = 2
+
+[node name="reset" type="Button" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton/cfr"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 25
+text = "Réinitialiser"
+
+[node name="Confirm" type="Button" parent="OPT/MarginContainer/VBoxContainer/ScrollContainer/VButton/cfr"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 25
+text = "Confirmer"
+
+[node name="ConfirmMesssage" type="Label" parent="OPT/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gcnxy")
+theme_override_font_sizes/font_size = 20
+text = "Paramètres mis à jour !"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "Réinitialiser "
+initial_position = 1
+size = Vector2i(400, 100)
+ok_button_text = "Confirmer"
+dialog_text = "êtes vous sûr de vouloir réinitialiser vos touches ?"
+cancel_button_text = "Annuler"
+
+[node name="ConfirmationDialog2" type="ConfirmationDialog" parent="."]
+title = "Réinitialiser les paramètres"
+initial_position = 1
+size = Vector2i(637, 100)
+ok_button_text = "Réinitialiser"
+dialog_text = "êtes vous sûr de vouloir réinitialiser les paramètres (n'affecte pas les touches)"
+cancel_button_text = "Annuler"

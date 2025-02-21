@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b107skdlf0nel"
+path="res://.godot/imported/shoot Ak47 sound2.wav-eb2f5fc74990eb9d08e4e0075027c722.sample"
+
+[deps]
+
+source_file="res://Sounds/shoot Ak47 sound2.wav"
+dest_files=["res://.godot/imported/shoot Ak47 sound2.wav-eb2f5fc74990eb9d08e4e0075027c722.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

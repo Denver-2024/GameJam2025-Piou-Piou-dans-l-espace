@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://3a1tsy3qbjcy"]
+
+[ext_resource type="FontFile" uid="uid://buh5hiea02elm" path="res://styles/fonts/Nasalization Rg.otf" id="1_rdivk"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_rdivk")
+theme_override_font_sizes/font_size = 70
+text = "Multi Debug"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_rdivk")
+theme_override_font_sizes/normal_font_size = 20
+text = "Ce mode de jeu est utilisé à des fins de tests et de debug par les développeurs. "
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("1_rdivk")
+theme_override_font_sizes/normal_font_size = 20
+text = "Mode d'emploi : lancer deux instance sur la même machine, une qui va \"host\", la seconde qui va \"join\""
+
+[node name="VButton" type="VBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/separation = 15
+
+[node name="Host" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer/VButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rdivk")
+theme_override_font_sizes/font_size = 25
+text = "Host game"
+
+[node name="Join" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer/VButton"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rdivk")
+theme_override_font_sizes/font_size = 25
+text = "Join game
+"
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/VButton/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/VButton/Join" to="." method="_on_join_pressed"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfrioinia4v8l"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu_v_2.gd" id="1_e6hhb"]
+[ext_resource type="PackedScene" uid="uid://3a1tsy3qbjcy" path="res://Menus/Multiplayer_screen.tscn" id="2_l37qc"]
+[ext_resource type="PackedScene" uid="uid://ol1jisegyv74" path="res://Menus/Main.tscn" id="2_thtb6"]
+[ext_resource type="PackedScene" uid="uid://1pyco1nd2v25" path="res://Menus/options.tscn" id="4_jqr6r"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e6hhb")
+
+[node name="Main" parent="." instance=ExtResource("2_thtb6")]
+
+[node name="Direct_screen" parent="." instance=ExtResource("2_l37qc")]
+visible = false
+
+[node name="Multiplayer_screen" parent="." instance=ExtResource("2_l37qc")]
+visible = false
+
+[node name="options" parent="." instance=ExtResource("4_jqr6r")]
+visible = false
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "SERVER ERROR"
+initial_position = 1
+ok_button_text = "Cancel"
+dialog_text = "Server Disconnected"
+cancel_button_text = "Ok"

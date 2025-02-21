@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbws2lvnprfma"]
+
+[ext_resource type="Script" path="res://Objects/laser_mining_tool/laser_mining.gd" id="1_lxwpp"]
+[ext_resource type="PackedScene" uid="uid://b0uo3bwjpdi7u" path="res://Objects/shotgun/shotgun.glb" id="2_8da48"]
+
+[node name="laser_mining" type="Node3D"]
+script = ExtResource("1_lxwpp")
+
+[node name="shotgun" parent="." instance=ExtResource("2_8da48")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0698883, -1.04059)
+target_position = Vector3(0, -100, 0)
+collision_mask = 63
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

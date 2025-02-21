@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp5a472h0cpug"]
+
+[ext_resource type="Script" path="res://Scripts/objects/ammo_box.gd" id="1_l846v"]
+[ext_resource type="PackedScene" uid="uid://cd32wxkttvxwn" path="res://Blender-models/ammoBox.glb" id="1_u5qik"]
+[ext_resource type="Script" path="res://Scripts/game/sound_manager.gd" id="3_03csk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hocgt"]
+size = Vector3(0.561523, 0.501709, 0.885742)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 7
+contact_monitor = true
+max_contacts_reported = 1000
+script = ExtResource("1_l846v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0209961, 0.184937, 0.000488281)
+shape = SubResource("BoxShape3D_hocgt")
+
+[node name="ammoBox" parent="." instance=ExtResource("1_u5qik")]
+
+[node name="sound_manager_ammo" type="Node" parent="."]
+script = ExtResource("3_03csk")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

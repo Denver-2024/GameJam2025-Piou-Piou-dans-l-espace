@@ -1,0 +1,710 @@
+[gd_scene load_steps=42 format=3 uid="uid://c23vq3eol1x7t"]
+
+[ext_resource type="Script" path="res://Scripts/game/testing_area.gd" id="1_cyoik"]
+[ext_resource type="Script" path="res://addons/vaporwavesky/vaporwave_sky_material.gd" id="1_hrplo"]
+[ext_resource type="Shader" path="res://addons/vaporwavesky/vaporwave.gdshader" id="2_kiphd"]
+[ext_resource type="PackedScene" uid="uid://283wnay4htpt" path="res://Objects/puppet.tscn" id="4_u26q5"]
+[ext_resource type="Script" path="res://Scripts/events/event_button.gd" id="9_ay2ga"]
+[ext_resource type="PackedScene" uid="uid://dsen08caqdte5" path="res://Objects/spawn_point.tscn" id="9_upu0j"]
+[ext_resource type="Script" path="res://Scripts/game/timer1.gd" id="11_7x1my"]
+[ext_resource type="PackedScene" uid="uid://i80j05e5a7x4" path="res://Blender-models/doorframe.glb" id="11_35m10"]
+[ext_resource type="Script" path="res://Scripts/HUD_UI/logs.gd" id="11_wug6m"]
+[ext_resource type="PackedScene" uid="uid://dso0a3vp0dwej" path="res://Blender-models/wall_001.glb" id="12_1x2qd"]
+[ext_resource type="PackedScene" uid="uid://qjv6g4j07ryr" path="res://Objects/panneau.tscn" id="12_6q36s"]
+[ext_resource type="PackedScene" uid="uid://dc3gh83u8fsx" path="res://Objects/start_button.tscn" id="13_3uh8i"]
+[ext_resource type="Texture2D" uid="uid://b85myfhuxbr7i" path="res://Blender-models/textures/metal_floor_890-normal.jpg" id="13_b32n4"]
+[ext_resource type="Script" path="res://Scripts/objects/Objects.gd" id="13_w74sw"]
+[ext_resource type="PackedScene" uid="uid://6qvk1k2prl3r" path="res://Blender-models/window_wall.fbx" id="15_hq7qa"]
+[ext_resource type="PackedScene" uid="uid://dyvwngqmxipf2" path="res://Blender-models/door.glb" id="16_y0xjw"]
+[ext_resource type="PackedScene" uid="uid://dkbggmq0nkpd" path="res://Blender-models/box.fbx" id="17_anf4l"]
+[ext_resource type="Script" path="res://Scripts/game/sound_game.gd" id="17_ggvps"]
+[ext_resource type="Script" path="res://Scripts/events/test_button.gd" id="18_s0wee"]
+[ext_resource type="Script" path="res://spawn_points.gd" id="21_s75b0"]
+[ext_resource type="PackedScene" uid="uid://cgtox1f24c6sm" path="res://map/map.tscn" id="24_clexd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wmp6"]
+shader = ExtResource("2_kiphd")
+shader_parameter/sky_color = Color(0.1, 0.07, 0.2, 1)
+shader_parameter/sky_horizon_color = Color(0.56, 0.18, 0.42, 1)
+shader_parameter/sky_horizon_decay = 3.0
+shader_parameter/ground_color = Color(0.835294, 0.262745, 1, 1)
+shader_parameter/ground_horizon_color = Color(1, 1, 1, 1)
+shader_parameter/ground_horizon_decay = 1.0
+shader_parameter/stars_enabled = true
+shader_parameter/stars_below_horizon = false
+shader_parameter/star_color = Color(0.95, 0.9, 0.6, 1)
+shader_parameter/star_radius = 0.4
+shader_parameter/star_density = 23.2
+shader_parameter/star_randomness = 1.0
+shader_parameter/star_seed = Vector2(0, 0)
+shader_parameter/grid_enabled = false
+shader_parameter/grid_color = Color(0.18, 0.92, 0.74, 1)
+shader_parameter/grid_depth = 2.0
+shader_parameter/grid_spacing = 1.0
+shader_parameter/grid_thickness = 0.03
+shader_parameter/grid_max_distance = 25.0
+shader_parameter/grid_max_distance_fade = 0.3
+shader_parameter/grid_energy = 1.0
+shader_parameter/sun_radius = 10.0
+shader_parameter/sun_smoothing = 0.35
+shader_parameter/sun_glow_color = Color(0.96, 0.9, 0.35, 1)
+shader_parameter/sun_glow_radius = 30.0
+shader_parameter/sun_glow_intensity = 0.5
+shader_parameter/sun_gradient_enabled = true
+shader_parameter/sun_color_1 = Color(0.96, 0.9, 0.35, 1)
+shader_parameter/sun_color_2 = Color(0.96, 0.35, 0.9, 1)
+shader_parameter/sun_gradient_pos_frac = 0.6
+shader_parameter/sun_gradient_span_frac = 0.8
+shader_parameter/sun_banding_enabled = false
+shader_parameter/sun_banding_base_gap = 0.03
+shader_parameter/sun_banding_gap_mul = 1.1
+shader_parameter/sun_banding_stop_height = 0.7
+shader_parameter/sun_banding_thickness = 0.01
+script = ExtResource("1_hrplo")
+
+[sub_resource type="Sky" id="Sky_d2s1c"]
+sky_material = SubResource("ShaderMaterial_1wmp6")
+
+[sub_resource type="Environment" id="Environment_omeom"]
+background_mode = 2
+sky = SubResource("Sky_d2s1c")
+ambient_light_source = 2
+tonemap_mode = 1
+ssr_fade_in = 0.38968
+glow_enabled = true
+glow_normalized = true
+glow_hdr_scale = 4.0
+fog_light_energy = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mixy"]
+albedo_color = Color(0.458405, 0.458405, 0.458405, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nbe37"]
+material = SubResource("StandardMaterial3D_2mixy")
+size = Vector3(1, 20, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_70e32"]
+size = Vector3(50, 15, 0.875)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvd1m"]
+albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
+normal_enabled = true
+normal_texture = ExtResource("13_b32n4")
+uv1_scale = Vector3(60, 40, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ywjyp"]
+material = SubResource("StandardMaterial3D_pvd1m")
+size = Vector3(100, 0.5, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gvlli"]
+size = Vector3(100, 0.5, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmtxj"]
+size = Vector3(1, 15, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lii1v"]
+size = Vector3(0.426758, 13.1293, 50.2192)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jg2gd"]
+size = Vector3(50, 15, 1.91895)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6q55"]
+size = Vector3(3.84926, 3.98743, 4.21832)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pguwx"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 3.71
+
+[sub_resource type="BoxMesh" id="BoxMesh_p5pkm"]
+material = SubResource("StandardMaterial3D_pguwx")
+size = Vector3(0.5, 0.5, 15)
+
+[sub_resource type="Animation" id="Animation_fmfbe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/CanvasLayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/CanvasLayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/MarginContainer/VBoxContainer/HBoxContainer2/Panel/RichTextLabel:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p7uvm"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/CanvasLayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/CanvasLayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qrq88"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/CanvasLayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/CanvasLayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_03f5v"]
+_data = {
+"RESET": SubResource("Animation_fmfbe"),
+"fade_in": SubResource("Animation_p7uvm"),
+"fade_out": SubResource("Animation_qrq88")
+}
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0ab2h"]
+properties/0/path = NodePath("spawn_spawn:dic_spawn")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Lobby" type="Node3D"]
+script = ExtResource("1_cyoik")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_omeom")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player/player.tscn")
+spawn_path = NodePath("..")
+
+[node name="puppet" parent="." instance=ExtResource("4_u26q5")]
+transform = Transform3D(-0.99995, 0, -0.0100355, 0, 1, 0, 0.0100355, 0, -0.99995, 13.5293, 0, 0.864389)
+
+[node name="puppet2" parent="." instance=ExtResource("4_u26q5")]
+transform = Transform3D(-0.999669, 0, -0.0257058, 0, 1, 0, 0.0257058, 0, -0.999669, 13.3587, 0, 14.0171)
+
+[node name="Timer" type="Node" parent="."]
+script = ExtResource("11_7x1my")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Timer" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Temps restant :"
+
+[node name="Manche" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Manche : "
+
+[node name="Message_entremanche" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Passage a la manche suivante dans "
+
+[node name="begin_timer" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Container" type="Container" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Container2" type="Container" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2/Panel"]
+z_index = 2
+layout_mode = 2
+offset_right = 280.0
+offset_bottom = 154.0
+size_flags_horizontal = 3
+scroll_active = false
+scroll_following = true
+autowrap_mode = 2
+tab_size = 8
+shortcut_keys_enabled = false
+script = ExtResource("11_wug6m")
+
+[node name="Container3" type="Container" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Container" type="Container" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Container2" type="Container" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Container" type="Container" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spawn_points" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -340.683)
+
+[node name="SP1" parent="Spawn_points" instance=ExtResource("9_upu0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 131.917)
+
+[node name="SP2" parent="Spawn_points" instance=ExtResource("9_upu0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 242.714)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.762939, 0.00629585, -0.64644, 0.64647, -0.00743012, 0.762903, 2.48508e-10, -0.999953, -0.00973882, -38.2024, 27.203, 0)
+shadow_enabled = true
+shadow_bias = 0.82
+
+[node name="event_button" parent="." instance=ExtResource("13_3uh8i")]
+transform = Transform3D(-0.0339229, 0, 0.999424, 0, 1, 0, -0.999424, 0, -0.0339229, -6.12517, 0, 164.621)
+collision_mask = 7
+script = ExtResource("9_ay2ga")
+
+[node name="Start_button" parent="." instance=ExtResource("13_3uh8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0470729, 0, -22.7317)
+collision_mask = 7
+
+[node name="spawn" type="Node3D" parent="."]
+
+[node name="est" type="StaticBody3D" parent="spawn"]
+collision_layer = 4
+collision_mask = 7
+
+[node name="doorframe" parent="spawn/est" instance=ExtResource("11_35m10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.381872, -0.969236, 25.2576)
+
+[node name="wall_005" parent="spawn/est" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -18.8782, 6.21974, 25.2576)
+
+[node name="wall_006" parent="spawn/est" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 27.1099, 6.41173, 25.2576)
+
+[node name="wall_007" parent="spawn/est" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 27.1099, -0.0674388, 25.2576)
+
+[node name="wall_008" parent="spawn/est" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -18.8782, -0.0674388, 25.2576)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="spawn/est"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58763, 4.34034, 25.0029)
+mesh = SubResource("BoxMesh_nbe37")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spawn/est"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90007, 4.34034, 25.0029)
+mesh = SubResource("BoxMesh_nbe37")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn/est"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.36468, 24.8763)
+shape = SubResource("BoxShape3D_70e32")
+
+[node name="Lobby_floor" type="StaticBody3D" parent="spawn"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.190519, 0.257648)
+disable_mode = 2
+collision_layer = 4
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spawn/Lobby_floor"]
+mesh = SubResource("BoxMesh_ywjyp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn/Lobby_floor"]
+shape = SubResource("BoxShape3D_gvlli")
+
+[node name="Lobby_floor" type="StaticBody3D" parent="spawn/Lobby_floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.1564, 0)
+disable_mode = 2
+collision_layer = 4
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spawn/Lobby_floor/Lobby_floor"]
+mesh = SubResource("BoxMesh_ywjyp")
+
+[node name="Panneau" parent="spawn" instance=ExtResource("12_6q36s")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 6.59197, -24.1873)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247899, 6.31813, -1.35035)
+light_energy = 21.07
+light_indirect_energy = 15.46
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 67.655
+spot_attenuation = 1.1
+spot_angle = 60.65
+
+[node name="wall_002" parent="spawn" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -5, 0, -4.37114e-08, 25, 6.4, 0)
+
+[node name="wall_001" parent="spawn" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 5, 0, -4.37114e-08, -25, 6.24, 0.545)
+
+[node name="north" type="StaticBody3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.9252, 0, 0)
+collision_layer = 4
+collision_mask = 15
+
+[node name="window_wall" parent="spawn/north" instance=ExtResource("15_hq7qa")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, 0, 0.016)
+
+[node name="wall_002" parent="spawn/north" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, -25, 0, 14.975)
+
+[node name="wall_001" parent="spawn/north" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, -25, 0, -14.524)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn/north"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9916, 4.85343, 0)
+shape = SubResource("BoxShape3D_fmtxj")
+
+[node name="south" type="StaticBody3D" parent="spawn"]
+collision_layer = 4
+collision_mask = 15
+
+[node name="window_wall" parent="spawn/south" instance=ExtResource("15_hq7qa")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, 0, 0.016)
+
+[node name="wall_002" parent="spawn/south" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, -25, 0, 14.975)
+
+[node name="wall_001" parent="spawn/south" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, -25, 0, -14.524)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn/south"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7989, 6.1327, -0.109619)
+shape = SubResource("BoxShape3D_lii1v")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.33321, 5.83575)
+omni_range = 33.9702
+omni_attenuation = -0.07
+
+[node name="west" type="StaticBody3D" parent="spawn"]
+collision_layer = 4
+collision_mask = 15
+
+[node name="wall_004" parent="spawn/west" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0.053, 6.4, -24.843)
+
+[node name="wall_003" parent="spawn/west" instance=ExtResource("12_1x2qd")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0.0531921, -0.065519, -24.8432)
+
+[node name="door" parent="spawn/west" instance=ExtResource("16_y0xjw")]
+transform = Transform3D(-1.85, 0, -1.50996e-07, 0, 1, 0, 2.79342e-07, 0, -1, 5.05552, -0.0655192, 26.7831)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn/west"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.07071, -25.1177)
+shape = SubResource("BoxShape3D_jg2gd")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="spawn"]
+transform = Transform3D(0.845886, 0, 0.533364, 0, 1, 0, -0.533364, 0, 0.845886, -17.4316, 5.8099, 14.1068)
+collision_layer = 4
+collision_mask = 15
+
+[node name="box" parent="spawn/StaticBody3D3" instance=ExtResource("17_anf4l")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0852127, -0.00421143, 0.0237732)
+shape = SubResource("BoxShape3D_n6q55")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="spawn"]
+transform = Transform3D(-0.614514, 0, -0.951627, 0, 1, 0, 1.90325, 0, -0.307257, -15.7676, 1.91536, 17.2689)
+collision_layer = 4
+collision_mask = 15
+
+[node name="box" parent="spawn/StaticBody3D2" instance=ExtResource("17_anf4l")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0852127, -0.00421143, 0.0237732)
+shape = SubResource("BoxShape3D_n6q55")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="spawn"]
+transform = Transform3D(0.777245, 0, -0.629198, 0, 1, 0, 0.629198, 0, 0.777245, -18.0048, 1.91536, -18.5328)
+collision_layer = 4
+collision_mask = 15
+
+[node name="box" parent="spawn/StaticBody3D4" instance=ExtResource("17_anf4l")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0852127, -0.00421143, 0.0237732)
+shape = SubResource("BoxShape3D_n6q55")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="spawn"]
+transform = Transform3D(0.957249, 0, -0.289266, 0, 1, 0, 0.289266, 0, 0.957249, -19.0827, 1.91536, 12.6331)
+collision_layer = 4
+collision_mask = 15
+
+[node name="box" parent="spawn/StaticBody3D" instance=ExtResource("17_anf4l")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0852127, -0.00421143, 0.0237732)
+shape = SubResource("BoxShape3D_n6q55")
+
+[node name="Node3D" type="Node3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0118, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spawn/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.12381, 0)
+mesh = SubResource("BoxMesh_p5pkm")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="spawn/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46053, 9.12381, 0)
+mesh = SubResource("BoxMesh_p5pkm")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="spawn/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0872, 9.12381, 0)
+mesh = SubResource("BoxMesh_p5pkm")
+skeleton = NodePath("../..")
+
+[node name="Node3D2" type="Node3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0118, -16.342)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spawn/Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.12381, 0)
+mesh = SubResource("BoxMesh_p5pkm")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="spawn/Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46053, 9.12381, 0)
+mesh = SubResource("BoxMesh_p5pkm")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="spawn/Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0872, 9.12381, 0)
+mesh = SubResource("BoxMesh_p5pkm")
+skeleton = NodePath("../..")
+
+[node name="Node3D3" type="Node3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0118, 16.6238)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spawn/Node3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.12381, 0)
+mesh = SubResource("BoxMesh_p5pkm")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="spawn/Node3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46053, 9.12381, 0)
+mesh = SubResource("BoxMesh_p5pkm")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="spawn/Node3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0872, 9.12381, 0)
+mesh = SubResource("BoxMesh_p5pkm")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_03f5v")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="AnimationPlayer"]
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer/CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sound_game" type="AudioStreamPlayer" parent="."]
+script = ExtResource("17_ggvps")
+
+[node name="Test_weapon" parent="." instance=ExtResource("13_3uh8i")]
+transform = Transform3D(-0.013648, 0, -0.999907, 0, 1, 0, 0.999907, 0, -0.013648, 15.946, 0, -9.20281)
+script = ExtResource("18_s0wee")
+
+[node name="Map" parent="." instance=ExtResource("24_clexd")]
+transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 0, 0, -152.468)
+
+[node name="Objects2" type="Node3D" parent="Map"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 17.1947, -24.8503)
+script = ExtResource("13_w74sw")
+
+[node name="Marker3D2" type="Marker3D" parent="Map/Objects2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Map/Objects2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Objects" type="Node3D" parent="Map"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 15.9349, 24.3479)
+script = ExtResource("13_w74sw")
+
+[node name="Marker3D2" type="Marker3D" parent="Map/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Map/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Map"]
+transform = Transform3D(4, 0, 8.17124e-14, 0, 10, 0, -1.13687e-13, 0, 1, -74.9366, 1.37741, 104.954)
+collision_layer = 4
+collision_mask = 15
+
+[node name="box" parent="Map/StaticBody3D4" instance=ExtResource("17_anf4l")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0852127, -0.00421143, 0.0237732)
+shape = SubResource("BoxShape3D_n6q55")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Map"]
+transform = Transform3D(4, 0, 1.42109e-14, 0, 10, 0, -5.68434e-14, 0, 1, 75.5268, 1.37741, 104.954)
+collision_layer = 4
+collision_mask = 15
+
+[node name="box" parent="Map/StaticBody3D3" instance=ExtResource("17_anf4l")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0852127, -0.00421143, 0.0237732)
+shape = SubResource("BoxShape3D_n6q55")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Map"]
+transform = Transform3D(4, 0, 1.77636e-14, 0, 10, 0, -7.10543e-14, 0, 1, 75.5268, 1.37741, -103.893)
+collision_layer = 4
+collision_mask = 15
+
+[node name="box" parent="Map/StaticBody3D2" instance=ExtResource("17_anf4l")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0852127, -0.00421143, 0.0237732)
+shape = SubResource("BoxShape3D_n6q55")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Map"]
+transform = Transform3D(4, 0, 2.4869e-14, 0, 10, 0, -9.9476e-14, 0, 1, -75.0794, 1.37741, -103.893)
+collision_layer = 4
+collision_mask = 15
+
+[node name="box" parent="Map/StaticBody3D" instance=ExtResource("17_anf4l")]
+transform = Transform3D(0.5, 0, 3.55271e-15, 0, 0.5, 0, -3.55271e-15, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/StaticBody3D"]
+shape = SubResource("BoxShape3D_n6q55")
+
+[node name="spawn_spawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.104775, 0)
+script = ExtResource("21_s75b0")
+
+[node name="Spawn_point" parent="spawn_spawn" instance=ExtResource("9_upu0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.17782, 0, 0)
+
+[node name="Spawn_point2" parent="spawn_spawn" instance=ExtResource("9_upu0j")]
+
+[node name="Spawn_point3" parent="spawn_spawn" instance=ExtResource("9_upu0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54837, 0, 0)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0ab2h")

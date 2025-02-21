@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ynnattq17q5"]
+
+[ext_resource type="Script" path="res://Objects/rateau/rateau.gd" id="1_jn3vr"]
+[ext_resource type="PackedScene" uid="uid://c2exuyewux6fy" path="res://Blender-models/laser_weapon.glb" id="2_1tqv7"]
+
+[node name="rateau" type="Node3D"]
+script = ExtResource("1_jn3vr")
+
+[node name="laser_weapon" parent="." instance=ExtResource("2_1tqv7")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.753502)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.833983)

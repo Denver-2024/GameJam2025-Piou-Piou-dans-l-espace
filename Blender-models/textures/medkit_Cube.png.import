@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dukdyssww6l27"
+path.s3tc="res://.godot/imported/medkit_Cube.png-1f11b09acad533cbdfd963116c1ff4fe.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c806b00ab077a10ac5f8179917e18943"
+}
+
+[deps]
+
+source_file="res://Blender-models/textures/medkit_Cube.png"
+dest_files=["res://.godot/imported/medkit_Cube.png-1f11b09acad533cbdfd963116c1ff4fe.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

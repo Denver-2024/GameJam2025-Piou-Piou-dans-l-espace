@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://v6jv4lwaqfte"]
+
+[ext_resource type="PackedScene" uid="uid://b17vpt4lba0gf" path="res://Objects/grenade/grenade.glb" id="1_k86o5"]
+[ext_resource type="Script" path="res://Objects/grenade/grenade.gd" id="1_q8a41"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_td78m"]
+friction = 0.5
+bounce = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y3fxa"]
+radius = 5.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xcyrl"]
+direction = Vector3(1, 1, 0)
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tak4n"]
+albedo_color = Color(1, 0.666667, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.596078, 0, 1)
+emission_energy_multiplier = 2.6
+emission_on_uv2 = true
+grow = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_6wc8h"]
+material = SubResource("StandardMaterial3D_tak4n")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_bvqpm"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("grenade:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("GPUParticles3D:emitting")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hss3p"]
+radius = 0.173103
+
+[node name="GrenadeObject" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 68
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_td78m")
+contact_monitor = true
+max_contacts_reported = 10000
+script = ExtResource("1_q8a41")
+
+[node name="grenade" parent="." instance=ExtResource("1_k86o5")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_y3fxa")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 100
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+trail_lifetime = 0.65
+process_material = SubResource("ParticleProcessMaterial_xcyrl")
+draw_pass_1 = SubResource("BoxMesh_6wc8h")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_bvqpm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003479, 0.00610352, 0.0109863)
+shape = SubResource("SphereShape3D_hss3p")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

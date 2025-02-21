@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bskuh4p7xsfg6"
+path="res://.godot/imported/tir pistolet.mp3-c0095c11d389a7ed2bda81cc884f0aea.mp3str"
+
+[deps]
+
+source_file="res://Sounds/tir pistolet.mp3"
+dest_files=["res://.godot/imported/tir pistolet.mp3-c0095c11d389a7ed2bda81cc884f0aea.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

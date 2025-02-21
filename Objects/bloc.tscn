@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnoyy1bb4gbm3"]
+
+[ext_resource type="Texture2D" uid="uid://dvq6r81xw8ff5" path="res://addons/kenney_prototype_textures/orange/texture_02.png" id="1_6r0eg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nubju"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hepos"]
+albedo_texture = ExtResource("1_6r0eg")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4bm55"]
+
+[node name="Bloc" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 5
+contact_monitor = true
+max_contacts_reported = 10
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_nubju")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+material_override = SubResource("StandardMaterial3D_hepos")
+mesh = SubResource("BoxMesh_4bm55")
+skeleton = NodePath("../..")

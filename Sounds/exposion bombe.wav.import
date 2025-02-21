@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7pbe1fnw0p4m"
+path="res://.godot/imported/exposion bombe.wav-29e7e1805f263725d6de6103eace9d0e.sample"
+
+[deps]
+
+source_file="res://Sounds/exposion bombe.wav"
+dest_files=["res://.godot/imported/exposion bombe.wav-29e7e1805f263725d6de6103eace9d0e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

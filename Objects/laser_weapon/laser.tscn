@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8074nnbthilv"]
+
+[ext_resource type="Script" path="res://Scripts/objects/laser.gd" id="1_f02n0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a05nb"]
+albedo_color = Color(0, 1, 1, 1)
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 3.04
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fg5jn"]
+material = SubResource("StandardMaterial3D_a05nb")
+radius = 0.05
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qslj"]
+albedo_color = Color(1, 0.8, 0, 1)
+emission_enabled = true
+emission = Color(0, 0.858824, 1, 1)
+emission_energy_multiplier = 1.8
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o0kf4"]
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_x5tcy"]
+uv2_padding = 2.5
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="laser" type="Node3D"]
+script = ExtResource("1_f02n0")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.356303, 0)
+target_position = Vector3(0, 0.5, 0)
+collision_mask = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_fg5jn")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.386269, 0.00154266)
+material_override = SubResource("StandardMaterial3D_0qslj")
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_o0kf4")
+draw_pass_1 = SubResource("BoxMesh_x5tcy")
